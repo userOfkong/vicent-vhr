@@ -15,6 +15,7 @@
 </template>
 
 <script>
+    import {postKeyValueRequest} from "../utils/api"
     export default {
         name: "Login",
         data(){
@@ -34,7 +35,12 @@
             submitLogin(){
                 this.$refs.loginForm.validate((valid)=> {
                     if(valid){
-                        alert('submit!');
+                        postKeyValueRequest('/doLogin',this.loginForm).then(resp=>{
+                            if(resp){
+                                alert(JSON.stringify(resp))
+                            }
+                        })
+                        // alert('submit!');
                     }else{
                         // console.log("error submit!!");
                         this.$message.error('请输入所有字段');
