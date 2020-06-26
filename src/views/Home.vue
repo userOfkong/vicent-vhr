@@ -36,8 +36,24 @@
 
 
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-main>Main</el-main>
+      <el-aside width="200px">
+<!--          <el-menu @select="menuClick">-->
+          <el-menu router>
+              <el-submenu index="1" v-for="(item,index) in this.$router.options.routes" v-if="!item.hidden" :key="index">
+                  <template slot="title">
+                      <i class="el-icon-location"></i>
+                      <span slot="title">{{item.name}}</span>
+                  </template>
+                      <el-menu-item :index="child.path" v-for="(child,indexj) in item.children" :key="indexj">{{child.name}}</el-menu-item>
+                  </el-submenu>
+              </el-submenu>
+          </el-menu>
+      </el-aside>
+
+
+      <el-main>
+          <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -50,24 +66,29 @@
       }
     },
     methods:{
-      commandHandler(cmd){
-        if (cmd=='logout'){
-          this.$confirm('此操作将注销登录, 是否继续?', '提示', {
-            confirmButtonText: '确定',
-            cancelButtonText: '取消',
-            type: 'warning'
-          }).then(() => {
-            this.getRequest("/logout");
-            window.sessionStorage.removeItem("user");
-            this.$router.replace("/")
-          }).catch(() => {
-            this.$message({
-              type: 'info',
-              message: '已取消删除'
-            });
-          });
-        }
-      }
+        // menuClick(index,indexPath){
+        //     // console.log(index);
+        //     // console.log(indexPath);
+        //     this.$router.push(index)
+        // },
+        commandHandler(cmd){
+            if (cmd=='logout'){
+              this.$confirm('此操作将注销登录, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+              }).then(() => {
+                this.getRequest("/logout");
+                window.sessionStorage.removeItem("user");
+                this.$router.replace("/")
+              }).catch(() => {
+                this.$message({
+                  type: 'info',
+                  message: '已取消删除'
+                });
+              });
+            }
+          }
     }
   }
 </script>
