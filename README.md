@@ -2,5 +2,5 @@
 
 1. sessionStorage
 2. localStorage
-**3. vuex**
+3. **3. vuex**
 vuex 安装、配置
