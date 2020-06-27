@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login'
 import Home from './views/Home'
-import Test1 from './views/Test1'
-import Test2 from './views/Test2'
+
 
 Vue.use(Router)
 
