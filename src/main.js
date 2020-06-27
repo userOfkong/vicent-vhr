@@ -29,9 +29,13 @@ router.beforeEach((to,from,next)=>{
   // console.log(from);
   // next();
   if (to.path=='/'){
+    console.log(to)
+    console.log(from)
     next();
   }else{
     initMenu(router,store);
+    console.log(to)
+    console.log(from)
     next();
   }
 })
