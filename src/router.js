@@ -19,22 +19,23 @@ export default new Router({
             name:'Home',
             component:Home,
             hidden: true
-        },{
-            path:'/home',
-            name:'导航一',
-            component:Home,
-            children:[
-                {
-                    path:'/test1',
-                    name:'选项1',
-                    component:Test1
-                },{
-                    path:'/test2',
-                    name:'选项2',
-                    component:Test2
-                }
-            ]
         }
+        // ,{
+        //     path:'/home',
+        //     name:'导航一',
+        //     component:Home,
+        //     children:[
+        //         {
+        //             path:'/test1',
+        //             name:'选项1',
+        //             component:Test1
+        //         },{
+        //             path:'/test2',
+        //             name:'选项2',
+        //             component:Test2
+        //         }
+        //     ]
+        // }
         // {
         //     path: '/',
         //     name: 'home',
